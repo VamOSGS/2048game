@@ -1,0 +1,61 @@
+@import 'vars';
+.GameBoard {
+    background: #F9F7EE;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    position: relative;
+    .Grid {
+        width: @mainW;
+        background: #BAACA0;
+        height: @mainW;
+        border-radius: 5px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        .gridItem {
+            margin: 7px;
+            border-radius: 7px;
+            background: #CCBFB4;
+            width: @gridW;
+            height: @gridW;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &.active {
+                animation: start .2s ease-in;
+                color: #7B726A;
+                font-size: 30px;
+                user-select: none;
+                cursor: default;
+                background: #EDE3D9;
+                &.g4 {
+                    background: #ECDFC8;
+                }
+                &.g8 {
+                    background: #F1B079;
+                }
+                &.g16 {
+                    background: #F49463;
+                }
+                &.g32 {
+                    background: #F57B5F;
+                }
+            }
+        }
+    }
+}
+
+@keyframes start {
+    0% {
+        transform: scale(.5);
+        opacity: .5
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1
+    }
+}

@@ -1,0 +1,202 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+* {
+  outline: 0;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.GameBoard {
+  background: #F9F7EE;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column-reverse;
+  position: relative;
+}
+.GameBoard .Grid {
+  width: 550px;
+  background: #BAACA0;
+  height: 550px;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.GameBoard .Grid .gridItem {
+  margin: 7px;
+  border-radius: 7px;
+  background: #CCBFB4;
+  width: 122.5px;
+  height: 122.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.GameBoard .Grid .gridItem.active {
+  animation: start 0.2s ease-in;
+  color: #7B726A;
+  font-size: 30px;
+  user-select: none;
+  cursor: default;
+  background: #EDE3D9;
+}
+.GameBoard .Grid .gridItem.active.g4 {
+  background: #ECDFC8;
+}
+.GameBoard .Grid .gridItem.active.g8 {
+  background: #F1B079;
+}
+.GameBoard .Grid .gridItem.active.g16 {
+  background: #F49463;
+}
+.GameBoard .Grid .gridItem.active.g32 {
+  background: #F57B5F;
+}
+@keyframes start {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+body {
+  background: #f7f7f7;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+body #root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+/*# sourceMappingURL=style.css.map*/
