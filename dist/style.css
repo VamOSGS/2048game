@@ -129,6 +129,8 @@ table {
 }
 .GameBoard {
   background: #F9F7EE;
+  width: 100vw;
+  height: 100vh;
   border-radius: 5px;
   display: flex;
   justify-content: center;

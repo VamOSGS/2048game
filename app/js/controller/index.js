@@ -58,28 +58,62 @@ export class Player {
     this.key = key;
     this.horzontal = [];
     this.vertical = [];
+    this.col = [];
   }
   get play() {
     switch (this.dir) {
       case 'horizontal':
         this.createHorizontalArr();
-        console.log(this.horzontal);
         if (this.key == 37) {
-          this.horzontal.map((arr, i) => {
-            let filterd = arr.filter(item => item.active);
-            if (filterd.length >= 2) {
-            }
-          });
-        } else {
+          this.leftPlay();
+        } else if (this.key == 39) {
+          this.rightPLay();
         }
-        break;
+        return this.arr;
       case 'vertical':
         this.createVerticalArr();
-        console.log(this.vertical);
-        break;
+        return this.arr;
       default:
         break;
     }
+  }
+  leftPlay() {
+    let horizontalCopy = this.horzontal;
+    this.horzontal.map((arr, i) => {
+      let find = arr.filter(item => item.active);
+      let filter = arr.filter(item => !item.active);
+      horizontalCopy[i] = [...find, ...filter];
+      this.sumSameNums(horizontalCopy);
+      this.horzontal = [...horizontalCopy];
+    });
+    let mainArrCopy = [];
+    horizontalCopy.map(a => {
+      mainArrCopy = [...mainArrCopy, ...a];
+    });
+    this.arr = [...horizontalCopy.reduce((a, b) => {
+      return a.concat(b);
+    }, [])];
+    return horizontalCopy;
+  }
+  rightPLay() {
+    let nArr = this.leftPlay()
+      .map(item => {
+        return item.reverse();
+      })
+      .reduce((a, b) => {
+        return a.concat(b);
+      }, []);
+    this.arr = [...nArr];
+  }
+  sumSameNums(param) {
+    // param.map(item => {
+    //   let active = item.filter(i => i.active);
+    //   if (active.length >= 2) {
+    //     console.log(active)
+    //     active.map(num => {})
+    //   }
+    // });
+    return param;
   }
   createHorizontalArr() {
     for (let c = 0; c < 4; c++) {
@@ -99,14 +133,26 @@ export class Player {
     }
   }
   createVerticalArr() {
+    this.columnArrGen();
     for (let c = 0; c < 4; c++) {
       let addingArr = [];
       this.arr.map((el, i) => {
-        if (c == 0 && this.col.indexOf(el.id) != -1) {
+        if (this.col[c].indexOf(el.id) != -1) {
           addingArr = [...addingArr, el];
         }
       });
       this.vertical = [...this.vertical, addingArr];
+    }
+  }
+  columnArrGen() {
+    for (let c = 0; c < 4; c++) {
+      let addingArr = [];
+      let g = 0;
+      for (let f = 1; f < 5; f++) {
+        addingArr = [...addingArr, f + c + g];
+        g += 3;
+      }
+      this.col = [...this.col, addingArr];
     }
   }
 }

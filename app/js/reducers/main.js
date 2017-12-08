@@ -11,9 +11,9 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case PRESS:
       const player = new Player(state.grid, action.payload.dir, action.payload.key);
-      player.play
       return {
-        ...state
+        ...state,
+        grid: player.play
       };
 
     case TEST:
