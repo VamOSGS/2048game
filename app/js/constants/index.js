@@ -1,2 +1,2 @@
 export const TEST = 'TEST';
-export const PRESS = 'PRESS'
+export const PRESS = 'PRESS';

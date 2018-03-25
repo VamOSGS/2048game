@@ -1,11 +1,11 @@
-import {TEST, PRESS} from '../constants';
+import { TEST, PRESS } from '../constants';
 
-export const test = (param) => ({
+export const test = param => ({
   type: TEST,
-  payload: payload
-})
+  payload,
+});
 
 export const press = param => ({
   type: PRESS,
-  payload: param
-})
+  payload: param,
+});

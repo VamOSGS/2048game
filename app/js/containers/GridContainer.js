@@ -1,13 +1,13 @@
-import { connect } from "react-redux";
-import { press } from "../actions";
-import Grid from "../components/Grid";
+import { connect } from 'react-redux';
+import { press } from '../actions';
+import Grid from '../components/Grid';
 
 const mapStateToProps = state => ({
-  gridState: state.main
+  gridState: state.main,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onPress: data => dispatch(press(data))
+  onPress: data => dispatch(press(data)),
 });
 
 const GridContainer = connect(mapStateToProps, mapDispatchToProps)(Grid);

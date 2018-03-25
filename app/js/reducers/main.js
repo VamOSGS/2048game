@@ -1,10 +1,11 @@
-import { TEST, PRESS } from "../constants";
-import { Controller, Player } from "../controller";
+import { TEST, PRESS } from '../constants';
+import { Controller, Player } from '../controller';
+
 const controller = new Controller();
 
 const initialState = {
   score: 0,
-  grid: controller.create
+  grid: controller.create,
 };
 
 export default (state = initialState, action) => {
@@ -13,12 +14,12 @@ export default (state = initialState, action) => {
       const player = new Player(state.grid, action.payload.dir, action.payload.key);
       return {
         ...state,
-        grid: player.play
+        grid: player.play,
       };
 
     case TEST:
       return {
-        ...state
+        ...state,
       };
 
     default:

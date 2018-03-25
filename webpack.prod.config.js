@@ -1,40 +1,43 @@
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
 const extractLess = new ExtractTextPlugin({
-  filename: "style.css",
-  disable: process.env.NODE_ENV === "development"
+  filename: 'style.css',
+  disable: process.env.NODE_ENV === 'development',
 });
 module.exports = {
   entry: './app/js/index.jsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
-    rules: [{
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader',
-    }, {
-      test: /\.less$/,
-      use: extractLess.extract({
-        use: [{
-          loader: "css-loader"
-        }, {
-          loader: "less-loader"
-        }],
-        fallback: "style-loader"
-      })
-    }]
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+      },
+      {
+        test: /\.less$/,
+        use: extractLess.extract({
+          use: [
+            {
+              loader: 'css-loader',
+            },
+            {
+              loader: 'less-loader',
+            },
+          ],
+          fallback: 'style-loader',
+        }),
+      },
+    ],
   },
   resolve: {
-    modules: [
-      'node_modules',
-      path.resolve(__dirname, 'app'),
-    ],
+    modules: ['node_modules', path.resolve(__dirname, 'app')],
     extensions: ['.js', '.jsx', '.json', '.css'],
   },
   devtool: 'source-map',
@@ -46,7 +49,7 @@ module.exports = {
       inject: 'body',
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
+      'process.env.NODE_ENV': JSON.stringify('production'),
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.UglifyJsPlugin({
@@ -60,11 +63,11 @@ module.exports = {
         dead_code: true,
         evaluate: true,
         if_return: true,
-        join_vars: true
+        join_vars: true,
       },
       output: {
-        comments: false
-      }
+        comments: false,
+      },
     }),
-  ]
+  ],
 };
