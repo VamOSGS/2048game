@@ -1,14 +1,11 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
+import { hot } from 'react-hot-loader';
 import GameBoard from './GameBoard';
 
-class App extends Component {
-  render() {
-    return (
-      <Fragment>
-        <GameBoard/>
-      </Fragment>
-    );
-  }
-} 
+const App = () => (
+  <Fragment>
+    <GameBoard />
+  </Fragment>
+);
 
-export default App;
+export default hot(module)(App);
